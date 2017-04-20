@@ -40,7 +40,9 @@ public class Citta {
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
-	
+	/**
+	 * giorni passati nella citta
+	 */
 	public void increaseCounter() {
 		this.counter += 1;
 	}

@@ -3,45 +3,31 @@ package it.polito.tdp.meteo.bean;
 import java.util.*;
 
 public class Model {
-	private Parziale parziale=new Parziale();
-	private LinkedList<Citta> best=new LinkedList<Citta>();
 	
 	
-	
-	public void ultimo(){
-		 
-			//String ultimo= best.addAll(parziale.getString);
-		//	return ultimo;
+	public void risolvi(List<Citta> listaCitta){
+		LinkedList parziale= new LinkedList();
+		LinkedList best= new LinkedList();
 		
-		
+		ListaCitta l= new ListaCitta();
+		l.riempiLista(listaCitta);
 	}
 	
-	public void verificaBest (Parziale parziale){
-		if(this.condizioni(parziale)==true){
-			best.addAll(parziale.getValues());
-		}
-		else{
-			int i=0;
-			while (i< 15){
-				if(condizionePartenza==true){
-					calcolaCosti();
-					
-				}else{
-					i++;
-				}
-			}
+	
+	
+	
+	
+	public void verificaBest(){
+		if(controlliEnd()==true){
+			
+		}else{
+			
 		}
 		
-	}
 	
-	/**
-	 * verifico:
-	 * - numero giorni tatali==15
-	 * -numero citta ==3
-	 * @param parziale
-	 * @return
-	 */
-	public boolean condizioni(Parziale parziale){
+	}
+
+	private boolean controlliEnd() {
 		return false;
 	}
 	
