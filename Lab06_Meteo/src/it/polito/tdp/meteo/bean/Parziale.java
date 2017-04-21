@@ -3,9 +3,10 @@ package it.polito.tdp.meteo.bean;
 import java.util.*;
 
 public class Parziale {
-	private Set<Citta> parziale= new HashSet<Citta>();
-	public int costoTotale=0;
-	int giorniTotali=0;
+	private ArrayList<Citta> parziale= new ArrayList<Citta>();
+	private int costoTotale=0;
+	private int giorniTotali=0;
+	private int numeroCitta=0;;
 	
 	/**
 	 * riempo la lista contente le tre citta su cui lavoro
@@ -16,38 +17,34 @@ public class Parziale {
 		
 	}
 	
-	public Set<Citta> returnArray(){
+	public List<Citta> returnArray(){
 		return parziale;
 	}
 	
 	
 	/**
 	 * aggiungesingolo elemento
+	 * incrementa giorni totale, e nella citta
 	 * @param citta
 	 */	
 	public void add(Citta citta){
-		if(!parziale.contains(citta))
-		          parziale.add(citta);
-		else
-			incrementaContatoreGiorni(citta);
+		          if(!parziale.contains(citta)){
+		        	  numeroCitta++;
+		          }
+		          parziale.add(citta);		          
+		          incrementaContatoreGiorni(citta);
+		          incrementaGiorniTotali();
 	}
-	/**
-	 * rimuovi un' elemento dalla lista
-	 * @param citta verra rimosso;
-	 */
-	public void remove (Citta citta){
-		if(parziale.contains(citta))
-		           parziale.remove(citta);
-		else{
-			throw new NullPointerException();
-		}
+	
+	public void remove (int i){// questa struttura dati va bene perche tanto è sempre l' ultimo a essere rimmosso
+		parziale.remove(i);
 	}
 	
 	/**
 	 * 
 	 * @param citta aumenta il numero di giorni in una citta;
 	 */
-	private void incrementaContatoreGiorni(Citta citta) {
+	public void incrementaContatoreGiorni(Citta citta) {
 		citta.increaseCounter();
 		
 	}
@@ -56,8 +53,8 @@ public class Parziale {
 	 * @param lista
 	 * @return numero di citta presenti nella lista
 	 */
-	public int size (List<Citta> lista){
-		return lista.size();
+	public int size (){
+		return parziale.size();
 		
 	}
 	
@@ -76,16 +73,47 @@ public class Parziale {
 		return costoTotale;
 	}
 	
-	public void calcolaGiorniTotali(){
-		Iterator<Citta> c= parziale.iterator();
-	     while(c.hasNext()){
-	    	giorniTotali+=c.next().getCounter();
-	     }
+	public void incrementaGiorniTotali(){
+		giorniTotali++;
 	     
 	}
 	
 	public int getGiorniTotali(){
 		return giorniTotali;
 	}
+	
+	public int getNumeroCitta(){
+	     return numeroCitta;
+	}
+	
+	public int getCostoTotale(){
+	     return costoTotale;
+	}
+
+	public Citta getIndex(int i) {
+		
+		return parziale.get(i);
+	}
+
+	public boolean treCitta() {
+		Set<Citta> temp= new HashSet<Citta>();
+		for(int i=0; i<15; i++){
+			Citta c=parziale.get(i);
+			if(!temp.contains(c))
+				temp.add(c);
+		}
+		
+		if(temp.size()==3)
+		      return true;
+		else
+			return false;
+	}
+
+	public boolean giorniMaxCitta(Citta c) {
+		if(c.getCounter()>6)
+		     return false;
+		else return true;
+	}
+	
 
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import it.polito.tdp.meteo.bean.Rilevamento;
@@ -40,7 +41,8 @@ public class MeteoDAO {
 	}
 
 	public List<Rilevamento> getAllRilevamentiLocalitaMese(int mese, String localita) {
-
+       Date d=2013-1-5;
+       
 		return null;
 	}
 

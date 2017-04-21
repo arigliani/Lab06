@@ -18,8 +18,8 @@ public class ListaCitta {
 	 * @param lista
 	 * @return numero di citta resenti nella lista
 	 */
-	public int size (ArrayList<Citta> lista){
-		return lista.size();
+	public int size (){
+		return citta.size();
 		
 	}
 	/**
