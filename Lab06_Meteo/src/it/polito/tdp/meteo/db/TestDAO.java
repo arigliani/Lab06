@@ -9,7 +9,10 @@ public class TestDAO {
 	public static void main(String[] args) {
 
 		MeteoDAO dao = new MeteoDAO();
-
+       Rilevamento c= dao.getAllRilevamentiCittaGiorno(1, "Genova", 3);
+       System.out.println(c.toString());
+		System.out.println("----------");
+		
 		List<Rilevamento> list = dao.getAllRilevamenti();
 
 		// STAMPA: localita, giorno, mese, anno, umidita (%)
