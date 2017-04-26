@@ -2,11 +2,15 @@ package it.polito.tdp.meteo.bean;
 
 import java.util.*;
 
+import it.polito.tdp.meteo.db.MeteoDAO;
+
 public class Citta {
 
 	private String nome;
 	private ArrayList<Rilevamento> rilevamenti;
 	private int counter = 0;
+	private MeteoDAO dao = new MeteoDAO();
+	
 	
 	public Citta(String nome) {
 		this.nome = nome;
@@ -14,7 +18,7 @@ public class Citta {
 	
 	public Citta(String nome, List<Rilevamento> rilevamenti) {
 		this.nome = nome;
-		this.rilevamenti.addAll(rilevamenti);
+		this.rilevamenti.addAll(dao.);
 	}
 
 	public String getNome() {
@@ -26,6 +30,7 @@ public class Citta {
 	}
 
 	public List<Rilevamento> getRilevamenti() {
+		
 
 		Collections.sort(rilevamenti, new PrevisioniPerData());
 		return rilevamenti;
