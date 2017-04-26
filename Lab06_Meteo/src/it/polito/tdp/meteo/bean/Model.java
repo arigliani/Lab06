@@ -28,6 +28,7 @@ public class Model {
 			best.addAll(parziale.returnArray());
 		     
 		}else{
+			
 			this.aggiungi( parziale, best,  l);
 		}
 		
