@@ -19,6 +19,7 @@ public class MyCity {
 	 * di un reciso mese
 	 */
 	public int getUmiditaGiorno (int mese, int giorno){
+		//System.out.println("mese: "+mese+" citta: "+this.nome+" gioro "+giorno);
 		rilevamento=dao.getAllRilevamentiCittaGiorno(mese, this.nome, giorno);
 		return rilevamento.getUmidita();
 	}
@@ -47,6 +48,18 @@ public class MyCity {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "MyCity [nome=" + nome + "]";
+	}
+
+	public String getNome() {
+		
+		return this.nome;
+	}
+	
+	
 	
 	
 

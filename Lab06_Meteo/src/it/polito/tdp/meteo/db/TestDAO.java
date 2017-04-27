@@ -13,6 +13,7 @@ public class TestDAO {
        System.out.println(c.toString());
 		System.out.println("----------");
 		
+		
 		List<Rilevamento> list = dao.getAllRilevamenti();
 
 		// STAMPA: localita, giorno, mese, anno, umidita (%)
@@ -28,7 +29,9 @@ public class TestDAO {
 //		
 //		System.out.println(dao.getAllRilevamentiLocalitaMese(5, "Torino"));
 //		System.out.println(dao.getAvgRilevamentiLocalitaMese(5, "Torino"));
+        System.out.println(("-----------------"));
 		
+		System.out.println(dao.getAllRilevamentiCittaGiorno(4, "Genova", 22));
 	}
 
 }

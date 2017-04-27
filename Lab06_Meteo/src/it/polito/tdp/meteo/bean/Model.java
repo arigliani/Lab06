@@ -11,20 +11,26 @@ public class Model {
 		MyCity c=new MyCity("Milano");
 		ArrayList<MyCity> elencoCitta= new ArrayList<MyCity>();
 		
+	
 		
+		
+
 	public Best risolvi(int mese){
 	//return quello di sotto best;
-		ArrayList<MyCity> temp=this.inizializza(mese);
+			ArrayList<MyCity> temp=this.inizializza(mese);
+		
 		Best b= new Best(temp, costoViaggio);
 		return b;
 		
 	}
+
+
 	private ArrayList<MyCity> inizializza(int mese) {
 		this.mese=mese;
 		elencoCitta.add(a);
 		elencoCitta.add(b);
 		elencoCitta.add(c);
-		int livello=-1;
+		int livello=0;
 		int cash=0;
 		ArrayList<MyCity> parziale= new ArrayList<MyCity>();
 		ArrayList<MyCity> best= new ArrayList<MyCity>();
@@ -40,19 +46,43 @@ public class Model {
 		for(int i=0; i<elencoCitta.size();i++){
 			MyCity c=elencoCitta.get(i);
 			parziale.add(c);
-			livello++;
 			
 			if(this.filtro(parziale, best, c,livello)==true){
+			                                                    	/*System.out.println("livello " +livello);
+			                                                    	System.out.println("cash " +cash);
+			                                                    	System.out.println("dimensione parziale " +parziale.size());
+			                                                    	System.out.println("ultimoparziale " +parziale.get(parziale.size()-1).toString());
+			                                                    	if(!best.isEmpty()){
+			                                                    		System.out.println("\n");
+			                                                    		MyCity a=best.get(0);
+			                                                    		int count=0;
+			                                                    		
+			                                                    		for(MyCity b:best){
+			                                                    			if(b.equals(a)){
+			                                                    				count++;
+			                                                    			}
+			                                                    			else{
+			                                                    				System.out.println("citta " + b.getNome()+" "+count);
+			                                                    				count=1;
+			                                                    				a=b;
+			                                                    			}
+			                                                    		}
+			                                                    		System.out.println("costo del best " +this.costoViaggio);
+			                                                    		System.out.println("\n");
+
+			                                                    	}*/
+			                                                    	
+			                                                    	
 				int costo=calcolaCosto(parziale,livello);
 				cash+=costo;
-				 if(verifica(parziale, best, cash)==false)
-				     this.aggiungi(parziale, best,livello, cash);
-				 
+				 if(verifica(parziale, best, cash)==false)					 
+				     this.aggiungi(parziale, best,livello+1, cash);
+				 cash-=costo;
 			}
 			
-			cash-=calcolaCosto(parziale,livello);
+			
 			parziale.remove(livello);
-			livello--;
+			//livello--;
 			
 		}
 		
@@ -77,13 +107,16 @@ public class Model {
 	
 	private int calcolaCosto(ArrayList<MyCity> parziale, int livello) {
 		int costo=0;
+		//int a=livello-1;
 		if(livello>0)
-		 if(!parziale.get(livello).equals(parziale.get(livello-1)))
+		 if(!parziale.get(livello).equals(parziale.get((livello-1))))
 			 costo+=100;
 		
-		System.out.println(f++);
-		System.out.println("----------" +livello+1);
-		 costo+= parziale.get(livello).getUmiditaGiorno(mese, livello+1);
+                                               // System.out.println(" mese : "+mese);
+		                                        //System.out.println("giorno " +(livello+1));
+		 costo+= parziale.get(livello).getUmiditaGiorno(mese, (livello+1));
+	                                               	 System.out.println("costo " +costo);
+		 
 			 
 	return costo;
     }
@@ -140,5 +173,7 @@ public class Model {
 		}
 	}
 	
+
+
 
 }
