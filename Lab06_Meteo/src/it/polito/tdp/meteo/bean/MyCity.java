@@ -1,6 +1,6 @@
 package it.polito.tdp.meteo.bean;
 
-import java.util.List;
+//import java.util.List;
 
 import it.polito.tdp.meteo.db.MeteoDAO;
 
@@ -16,7 +16,8 @@ public class MyCity {
 	
 	/**
 	 * torna il valore di umidita in un preciso giorno
-	 * di un reciso mese
+	 * di un reciso mese 
+	 * @return intero che indica l'umidita' nella citta
 	 */
 	public int getUmiditaGiorno (int mese, int giorno){
 		//System.out.println("mese: "+mese+" citta: "+this.nome+" gioro "+giorno);
@@ -24,6 +25,12 @@ public class MyCity {
 		return rilevamento.getUmidita();
 	}
 
+	
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -32,6 +39,9 @@ public class MyCity {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

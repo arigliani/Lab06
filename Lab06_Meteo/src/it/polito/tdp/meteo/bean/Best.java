@@ -17,7 +17,24 @@ public class Best {
 
 	@Override
 	public String toString() {
-		return "Best [best=" + best + ", costo=" + costo + "]";
+		String s="";
+		MyCity a=best.get(0);
+		int count=0;
+		
+		for(MyCity b:best){
+			//System.out.println("citta"+ b.getNome() );
+			if(b.equals(a)){
+				count++;
+			}
+			else{
+				s+=("citta "+ a.getNome()+" "+count+ "\n");
+				count=1;
+				a=b;
+			}
+		}
+		s+=("citta "+ a.getNome()+" "+count+ "\n");
+		s=s+"costo totale soluzione best: "+costo;
+		return  s;
 	}
 	
 	

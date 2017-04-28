@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import it.polito.tdp.meteo.bean.Rilevamento;
@@ -113,6 +112,12 @@ public class MeteoDAO {
 	 
 
 	public Double getAvgRilevamentiLocalitaMese(int mese, String localita) {
+		double umiditaMedia;
+		
+		final String sql=" SELECT AVG(umidita) as edia FROM situazione Where localita = ? ANDmonth(data)= ?";
+				
+		
+		
 
 		return 0.0;
 	}
