@@ -14,6 +14,10 @@ public class TestDAO {
 		System.out.println("----------");
 		
 		
+		System.out.println("umidita media a Genove mese di aprile: "+dao.getAvgRilevamentiLocalitaMese(4, "Genova"));
+		
+		System.out.println("----------");
+		
 		List<Rilevamento> list = dao.getAllRilevamenti();
 
 		// STAMPA: localita, giorno, mese, anno, umidita (%)

@@ -2,7 +2,10 @@ package it.polito.tdp.meteo.bean;
 
 import java.util.*;
 
+import it.polito.tdp.meteo.db.MeteoDAO;
+
 public class Model {
+	private MeteoDAO dao= new MeteoDAO();
 	private int mese;
 	private int giorniMese=15;
 	private int costoViaggio=0;
@@ -21,7 +24,8 @@ public class Model {
       */
 	public Best risolvi(int mese){
 	//return quello di sotto best;
-			ArrayList<MyCity> temp=this.inizializza(mese);
+		ArrayList<MyCity> temp= new ArrayList<MyCity>();
+			temp=this.inizializza(mese);
 		
 		Best b= new Best(temp, costoViaggio);
 		return b;
@@ -36,6 +40,8 @@ public class Model {
     * @return la lista con la combianzone migliore trovata
     */
 	private ArrayList<MyCity> inizializza(int mese) {
+		elencoCitta.clear();
+		costoViaggio=0;
 		this.mese=mese;
 		elencoCitta.add(a);
 		elencoCitta.add(b);
@@ -103,7 +109,7 @@ public class Model {
 			
 			
 		if(	 controlloTreCitta(parziale)){		
-			if((cash<costoViaggio)||(costoViaggio==0)){
+			if((cash<=costoViaggio)||(costoViaggio==0)){
 				best.clear();
 				best.addAll(parziale);
 				costoViaggio=cash;
@@ -233,7 +239,20 @@ public class Model {
 	}
 	
 
-
+   public String getAvgUmiditaCittaMese(int mese){
+	   String s="";
+	   double avg=0;
+	   elencoCitta.clear();
+	   elencoCitta.add(a);
+		elencoCitta.add(b);
+		elencoCitta.add(c);
+		for(MyCity a: elencoCitta){
+			avg=dao.getAvgRilevamentiLocalitaMese(mese, a.getNome());
+			s=s+("citta: "+a.getNome()+" umidita media: "+avg+ "\n");
+		}
+	   
+	   return s.trim();
+   }
 
 }
 //commento aa

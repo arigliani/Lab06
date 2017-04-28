@@ -9,7 +9,7 @@ public class TestModel {
 		
 		
 		Model m= new Model();
-		System.out.println(m.risolvi(4));
+		System.out.println(m.risolvi(1));
 		
 		
 
